@@ -1,10 +1,7 @@
 <?php
 namespace generic;
 
-/**
- * Classe utilitária para executar uma ação de controller.
- * Uso: Acao::run('Doacao', 'listar');
- */
+
 class Acao {
     public static function run(string $controller, string $action) {
         $class = "controller\\" . ucfirst($controller);

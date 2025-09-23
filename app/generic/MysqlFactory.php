@@ -4,10 +4,6 @@ namespace generic;
 use PDO;
 use PDOException;
 
-/**
- * Factory simples para criar conexões PDO com configuração.
- * Não usa singleton — caso queira múltiplas conexões, chame create().
- */
 class MysqlFactory {
     public static function create(array $config = []): PDO {
         $host = $config['host'] ?? '127.0.0.1';

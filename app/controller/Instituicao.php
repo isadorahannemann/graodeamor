@@ -12,11 +12,11 @@ class Instituicao {
 
     public function listar() {
         $instituicoes = $this->service->listar();
-        include "public/instituicao/listar.php";
+        include "../public/instituicao/listar.php";
     }
 
     public function form() {
-        include "public/instituicao/form.php";
+        include "../public/instituicao/form.php";
     }
 
     public function salvar() {

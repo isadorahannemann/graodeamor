@@ -22,6 +22,10 @@ class DoadorService {
         $dados['nome'] = trim($dados['nome'] ?? '');
         $dados['email'] = trim($dados['email'] ?? '');
 
+        if (!empty($dados['password'])) {
+            $dados['password'] = password_hash($dados['password'], PASSWORD_DEFAULT);
+        }
+
         if (!empty($dados['id'])) {
             return $this->dao->atualizar($dados);
         }
@@ -30,5 +34,9 @@ class DoadorService {
 
     public function deletar($id) {
         return $this->dao->deletar((int)$id);
+    }
+
+    public function findByEmail($email) {
+        return $this->dao->findByEmail($email);
     }
 }

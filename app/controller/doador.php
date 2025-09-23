@@ -12,11 +12,11 @@ class Doador {
 
     public function listar() {
         $doadores = $this->service->listar();
-        include "public/doador/listar.php";
+        include "../public/doador/listar.php";
     }
 
     public function form() {
-        include "public/doador/form.php";
+        include "../public/doador/form.php";
     }
 
     public function salvar() {

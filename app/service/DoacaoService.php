@@ -15,13 +15,15 @@ class DoacaoService {
     }
 
     public function obterPorId($id) {
-        return $this->dao->obterPorId((int)$id);
+        $doacao = $this->dao->obterPorId((int)$id);
+        return $doacao;
     }
 
     public function salvar(array $dados) {
         // limpar/normalizar dados básicos
         $dados['descricao'] = trim($dados['descricao'] ?? '');
         $dados['data_doacao'] = $dados['data_doacao'] ?? date('Y-m-d');
+        $dados['status'] = $dados['status'] ?? 'Disponível';
 
         if (!empty($dados['id'])) {
             return $this->dao->atualizar($dados);
@@ -31,5 +33,9 @@ class DoacaoService {
 
     public function deletar($id) {
         return $this->dao->deletar((int)$id);
+    }
+
+    public function retirar($id) {
+        return $this->dao->retirar((int)$id);
     }
 }

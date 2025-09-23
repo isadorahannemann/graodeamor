@@ -22,6 +22,10 @@ class InstituicaoService {
         $dados['nome'] = trim($dados['nome'] ?? '');
         $dados['endereco'] = trim($dados['endereco'] ?? '');
 
+        if (!empty($dados['password'])) {
+            $dados['password'] = password_hash($dados['password'], PASSWORD_DEFAULT);
+        }
+
         if (!empty($dados['id'])) {
             return $this->dao->atualizar($dados);
         }
@@ -30,5 +34,9 @@ class InstituicaoService {
 
     public function deletar($id) {
         return $this->dao->deletar((int)$id);
+    }
+
+    public function findByEmail($email) {
+        return $this->dao->findByEmail($email);
     }
 }
