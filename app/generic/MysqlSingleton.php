@@ -9,9 +9,9 @@ class MysqlSingleton {
     public static function getInstance() {
         if (!isset(self::$instance)) {
             $host = "localhost";
-            $dbname = "graodeamor";  // <- nome do banco
-            $user = "root";          // <- usuário do MySQL
-            $pass = "";              // <- senha (no XAMPP normalmente é vazio)
+            $dbname = "graodeamor";  
+            $user = "root";          
+            $pass = "";              
 
             self::$instance = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $pass);
             self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
