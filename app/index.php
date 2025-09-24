@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id']) && $controller !== 'Auth') {
     exit;
 }
 
-// Check user type for specific controllers
+
 if (isset($_SESSION['user_id'])) {
     $userType = $_SESSION['user_type'] ?? '';
 
