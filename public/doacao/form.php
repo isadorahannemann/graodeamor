@@ -9,18 +9,26 @@
 <body>
     <h1><?php echo $doacao ? 'Editar Doação' : 'Adicionar Doação'; ?></h1>
     <form method="POST" action="index.php?controller=Doacao&action=salvar">
-        <label for="doador_id">Doador:</label>
-        <select name="doador_id" id="doador_id">
-            <?php foreach ($doadores as $doador): ?>
-                <option value="<?php echo $doador['id']; ?>" <?php if ($doacao && $doacao['doador_id'] == $doador['id']) echo 'selected'; ?>><?php echo $doador['nome']; ?></option>
-            <?php endforeach; ?>
-        </select><br>
+        <label for="doador_nome">Doador:</label>
+        <input type="text" name="doador_nome" id="doador_nome" value="<?php echo $doacao['doador_nome'] ?? ''; ?>" placeholder="Digite o nome do doador"><br>
         <label for="instituicao_id">Instituição:</label>
         <select name="instituicao_id" id="instituicao_id">
+            <option value="">-- Selecione uma instituição (opcional) --</option>
             <?php foreach ($instituicoes as $instituicao): ?>
                 <option value="<?php echo $instituicao['id']; ?>" <?php if ($doacao && $doacao['instituicao_id'] == $instituicao['id']) echo 'selected'; ?>><?php echo $instituicao['nome']; ?></option>
             <?php endforeach; ?>
         </select><br>
+        <label for="alimento">Alimento:</label>
+        <select name="alimento" id="alimento">
+            <option value="arroz" <?php if ($doacao && ($doacao['alimento'] ?? '') == 'arroz') echo 'selected'; ?>>Arroz</option>
+            <option value="feijao" <?php if ($doacao && ($doacao['alimento'] ?? '') == 'feijao') echo 'selected'; ?>>Feijão</option>
+            <option value="macarrao" <?php if ($doacao && ($doacao['alimento'] ?? '') == 'macarrao') echo 'selected'; ?>>Macarrão</option>
+            <option value="oleo" <?php if ($doacao && ($doacao['alimento'] ?? '') == 'oleo') echo 'selected'; ?>>Óleo</option>
+            <option value="acucar" <?php if ($doacao && ($doacao['alimento'] ?? '') == 'acucar') echo 'selected'; ?>>Açúcar</option>
+            <option value="outros" <?php if ($doacao && ($doacao['alimento'] ?? '') == 'outros') echo 'selected'; ?>>Outros</option>
+        </select><br>
+        <label for="quantidade">Quantidade (kg):</label>
+        <input type="number" name="quantidade" id="quantidade" value="<?php echo $doacao['quantidade'] ?? ''; ?>" min="0" step="0.1"><br>
         <label for="descricao">Descrição:</label>
         <input type="text" name="descricao" id="descricao" value="<?php echo $doacao['descricao'] ?? ''; ?>"><br>
         <label for="data_doacao">Data:</label>

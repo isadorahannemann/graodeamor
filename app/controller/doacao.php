@@ -2,17 +2,14 @@
 namespace controller;
 
 use service\DoacaoService;
-use service\DoadorService;
 use service\InstituicaoService;
 
 class Doacao {
     private $service;
-    private $doadorService;
     private $instituicaoService;
 
     public function __construct() {
         $this->service = new DoacaoService();
-        $this->doadorService = new DoadorService();
         $this->instituicaoService = new InstituicaoService();
     }
 
@@ -22,7 +19,6 @@ class Doacao {
     }
 
     public function form() {
-        $doadores = $this->doadorService->listar();
         $instituicoes = $this->instituicaoService->listar();
         $doacao = null;
         if (isset($_GET['id'])) {
@@ -36,10 +32,10 @@ class Doacao {
         header("Location: index.php?controller=Doacao&action=listar");
     }
 
-    public function retirar() {
+    public function receber() {
         session_start();
         if ($_SESSION['user_type'] === 'instituicao' && isset($_GET['id'])) {
-            $this->service->retirar((int)$_GET['id']);
+            $this->service->receber((int)$_GET['id']);
             header("Location: index.php?controller=Doacao&action=listar");
         } else {
             header("Location: index.php?controller=Doacao&action=listar");

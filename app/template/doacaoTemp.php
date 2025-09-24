@@ -3,10 +3,7 @@ namespace template;
 
 class DoacaoTemp implements ITemplate {
 
-    /**
-     * $items esperado: array de doações com campos:
-     *  id, descricao, data_doacao, doador_nome, instituicao_nome
-     */
+ 
     public function renderList(array $items): string {
         ob_start();
         ?>
@@ -40,11 +37,7 @@ class DoacaoTemp implements ITemplate {
         return ob_get_clean();
     }
 
-    /**
-     * $item pode conter:
-     *  - dados da doacao (id, descricao, data_doacao, doador_id, instituicao_id)
-     *  - listas auxiliares: 'doadores' => [...], 'instituicoes' => [...]
-     */
+
     public function renderForm(array $item = []): string {
         ob_start();
         $id = $item['id'] ?? '';

@@ -17,7 +17,7 @@ class Auth {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             $password = $_POST['password'];
-            $type = $_POST['type']; // 'doador' or 'instituicao'
+            $type = $_POST['type']; 
 
             if ($type === 'doador') {
                 $user = $this->doadorService->findByEmail($email);
@@ -25,7 +25,7 @@ class Auth {
                 $user = $this->instituicaoService->findByEmail($email);
             }
 
-            // Debug output
+            
             error_log("Login attempt - Email: $email, Type: $type, User found: " . ($user ? 'Yes' : 'No'));
             if ($user) {
                 error_log("User ID: " . $user['id'] . ", Password hash: " . $user['password']);

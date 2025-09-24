@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Doações</title>
+    <title>Doações Disponíveis</title>
     <link rel="stylesheet" href="/graodeamor/graodeamor/public/assets/css/style.css">
 </head>
 <body>
-    <h1>Lista de Doações</h1>
+    <h1>Doações Disponíveis para Receber</h1>
     <table>
         <thead>
             <tr>
@@ -17,7 +17,6 @@
                 <th>Descrição</th>
                 <th>Data</th>
                 <th>Doador</th>
-                <th>Instituição</th>
                 <th>Status</th>
                 <th>Ações</th>
             </tr>
@@ -32,22 +31,18 @@
                         <td><?php echo $doacao['descricao']; ?></td>
                         <td><?php echo $doacao['data_doacao']; ?></td>
                         <td><?php echo $doacao['doador_nome']; ?></td>
-                        <td><?php echo $doacao['instituicao_nome']; ?></td>
                         <td><?php echo $doacao['status'] ?? 'Disponível'; ?></td>
-                        <td><a href="index.php?controller=Doacao&action=form&id=<?php echo $doacao['id']; ?>">Editar</a></td>
-                        <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'instituicao'): ?>
-                            <td><a href="index.php?controller=Doacao&action=receber&id=<?php echo $doacao['id']; ?>">Receber</a></td>
-                        <?php endif; ?>
+                        <td><a href="index.php?controller=Doacao&action=receber&id=<?php echo $doacao['id']; ?>">Receber</a></td>
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="10">Nenhuma doação encontrada.</td>
+                    <td colspan="8">Nenhuma doação disponível.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
     </table>
-    <a href="index.php?controller=Doacao&action=form">Adicionar Doação</a>
+    <a href="index.php?controller=Instituicao&action=doacoes">Ver Doações</a>
     <a href="index.php?controller=Auth&action=logout">Logout</a>
 </body>
 </html>

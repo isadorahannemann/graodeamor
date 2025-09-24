@@ -20,7 +20,10 @@ class DoacaoService {
     }
 
     public function salvar(array $dados) {
-        // limpar/normalizar dados básicos
+
+        $dados['doador_nome'] = trim($dados['doador_nome'] ?? '');
+        $dados['alimento'] = trim($dados['alimento'] ?? '');
+        $dados['quantidade'] = floatval($dados['quantidade'] ?? 0);
         $dados['descricao'] = trim($dados['descricao'] ?? '');
         $dados['data_doacao'] = $dados['data_doacao'] ?? date('Y-m-d');
         $dados['status'] = $dados['status'] ?? 'Disponível';
@@ -35,7 +38,7 @@ class DoacaoService {
         return $this->dao->deletar((int)$id);
     }
 
-    public function retirar($id) {
-        return $this->dao->retirar((int)$id);
+    public function receber($id) {
+        return $this->dao->receber((int)$id);
     }
 }
