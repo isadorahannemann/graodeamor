@@ -11,7 +11,7 @@
     <?php if (isset($error)): ?>
         <p style="color: red;"><?php echo $error; ?></p>
     <?php endif; ?>
-    <form method="POST" action="index.php?controller=Auth&action=register">
+    <form method="POST" action="/graodeamor/graodeamor/app/index.php?controller=Auth&action=register">
         <label for="type">Tipo:</label>
         <select name="type" id="type" required>
             <option value="doador">Doador</option>
@@ -27,6 +27,6 @@
         <input type="text" name="endereco" id="endereco"><br>
         <button type="submit">Cadastrar</button>
     </form>
-    <a href="index.php?controller=Auth&action=login">Login</a>
+    <a href="/graodeamor/graodeamor/app/index.php?controller=Auth&action=login">Login</a>
 </body>
 </html>

@@ -36,13 +36,13 @@ class Auth {
                 session_start();
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_type'] = $type;
-                header("Location: index.php?controller=Doacao&action=listar");
+                header("Location: /graodeamor/graodeamor/app/index.php?controller=Doacao&action=listar");
                 exit;
             } else {
                 $error = "Credenciais inválidas.";
             }
         }
-        include "../public/auth/login.php";
+        include __DIR__ . "/../../public/auth/login.php";
     }
 
     public function register() {
@@ -56,19 +56,19 @@ class Auth {
                 } else {
                     $this->instituicaoService->salvar($data);
                 }
-                header("Location: index.php?controller=Auth&action=login");
+                header("Location: /graodeamor/graodeamor/app/index.php?controller=Auth&action=login");
                 exit;
             } catch (\Exception $e) {
                 $error = $e->getMessage();
             }
         }
-        include "../public/auth/register.php";
+        include __DIR__ . "/../../public/auth/register.php";
     }
 
     public function logout() {
         session_start();
         session_destroy();
-        header("Location: index.php?controller=Auth&action=login");
+        header("Location: /graodeamor/graodeamor/app/index.php?controller=Auth&action=login");
         exit;
     }
 }

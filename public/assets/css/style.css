@@ -14,7 +14,7 @@ body {
 }
 
 h1 {
-    color: #4CAF50;
+    color: #DB9C53;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -34,7 +34,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #4CAF50;
+    background-color: #DB9C53;
     color: white;
 }
 
@@ -67,7 +67,7 @@ input, select {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #DB9C53;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -77,11 +77,11 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #c68a3f;
 }
 
 a {
-    color: #4CAF50;
+    color: #DB9C53;
     text-decoration: none;
     display: inline-block;
     margin-top: 10px;

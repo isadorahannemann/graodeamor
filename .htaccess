@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Serve root as public/index.php
+RewriteRule ^$ public/index.php [L]
+
+# Serve existing files and directories directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route MVC paths like /controller/action to app/index.php
+RewriteRule ^([a-zA-Z0-9_-]+)/?([a-zA-Z0-9_-]+)?/?$ app/index.php?controller=$1&amp;action=$2 [QSA,L]

@@ -11,7 +11,7 @@
     <?php if (isset($error)): ?>
         <p class="error"><?php echo $error; ?></p>
     <?php endif; ?>
-    <form method="POST" action="index.php?controller=Auth&action=login">
+    <form method="POST" action="/graodeamor/graodeamor/app/index.php?controller=Auth&action=login">
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required><br>
         <label for="password">Senha:</label>
@@ -23,6 +23,6 @@
         </select><br>
         <button type="submit">Login</button>
     </form>
-    <a href="index.php?controller=Auth&action=register">Cadastrar</a>
+    <a href="/graodeamor/graodeamor/app/index.php?controller=Auth&action=register">Cadastrar</a>
 </body>
 </html>
