@@ -8,6 +8,9 @@
 </head>
 <body>
     <h1>Lista de Doações</h1>
+    <?php if (isset($message) && $message): ?>
+        <p style="color: green; font-weight: bold;"><?php echo $message; ?></p>
+    <?php endif; ?>
     <table>
         <thead>
             <tr>

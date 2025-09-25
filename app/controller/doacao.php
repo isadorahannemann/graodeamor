@@ -15,6 +15,10 @@ class Doacao {
 
     public function listar() {
         $doacoes = $this->service->listar();
+        $message = $_SESSION['success_message'] ?? null;
+        if ($message) {
+            unset($_SESSION['success_message']);
+        }
         include "../public/doacao/listar.php";
     }
 
@@ -33,12 +37,10 @@ class Doacao {
     }
 
     public function receber() {
-        session_start();
-        if ($_SESSION['user_type'] === 'instituicao' && isset($_GET['id'])) {
+        if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'instituicao' && isset($_GET['id'])) {
             $this->service->receber((int)$_GET['id']);
-            header("Location: index.php?controller=Doacao&action=listar");
-        } else {
-            header("Location: index.php?controller=Doacao&action=listar");
+            $_SESSION['success_message'] = "Doação recebida com sucesso";
         }
+        header("Location: index.php?controller=Doacao&action=listar");
     }
 }
